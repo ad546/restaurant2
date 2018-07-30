@@ -15,7 +15,7 @@
   <header>
     <a href="#map-skip" class="skip-link">Skip past map</a>
     <nav>
-      <h1><a href="/">Restaurant Reviews</a></h1>
+      <h1><a href="/" alt="Return to home page">Restaurant Reviews</a></h1>
     </nav>
   </header>
 
@@ -26,10 +26,10 @@
     <section id="map-skip" tabindex="-1">
       <div class="filter-options">
         <!-- <h2>Filter Results</h2> -->
-        <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+        <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" alt="Use this to filter by neighborhood.">
           <option value="all">All Neighborhoods</option>
         </select>
-        <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
+        <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" alt="Use this to filter by type of food.">
           <option value="all">All Cuisines</option>
         </select>
       </div>
@@ -43,7 +43,7 @@
 
 
   <footer id="footer">
-    Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+    Copyright (c) 2017 <a href="/" alt="Return to top of home page."><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
 
 </body>
