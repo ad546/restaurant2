@@ -48,4 +48,30 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
     console.log("[Service Worker] Fetching", event.request.url);
+
+    event.respondWith(
+        caches.match(event.request).then(function(response) {
+            if (response) {
+                console.log("[Service Worker] found in cache" + event.request.url);
+                return response;
+            }
+            var requestClone = event.request.clone();
+            fetch(event.request).then(function(response) {
+                if (!response) {
+                    console.log("[Service Worker] No Response from fetch");
+                    return response;
+                }
+
+                var responseClone = response.clone();
+                
+                caches.open(cacheName).then(function(cache) {
+                    cache.put(event.request, responseClone);
+                    return response;
+
+                });
+            }).catch(function(err) {
+                console.log("[Service Worker] Error fetching and caching", err);
+            })
+        })
+    )
 })
