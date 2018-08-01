@@ -16,9 +16,18 @@ on any device.
 ## How to Run
 
 1. Download the zip folder containing the files for this project to your local machine.
-2. Check python version with command line ' python -V '
-3. If you are using Python 2, start a local server with '  python -m SimpleHTTPServer800 '
-4. If you are using Python 3, start a local server with '  python3 -m http.server 8000 '
+2. Check python version with command line 
+``` 
+python -V 
+```
+3. If you are using Python 2, start a local server with 
+``` 
+python -m SimpleHTTPServer800
+```
+4. If you are using Python 3, start a local server with 
+```
+python3 -m http.server 8000
+```
 5. Visit http://localhost:8000
 
 
