@@ -21,24 +21,24 @@ var cacheFiles = [
 ];
 
 self.addEventListener('install', function(event) {
-    console.log("[Service Worker] Installed");
-
+    console.log("Installed");
+    
     event.waitUntil(
         caches.open(cacheName).then(function(cache) {
-            console.log("[Service Worker] Caching cacheFiles");
+            console.log("Caching cacheFiles");
             return cache.addAll(cacheFiles);
         })
     )
 })
 
 self.addEventListener('activate', function(event) {
-    console.log("[Service Worker] Activated");
+    console.log("Activated");
 
     event.waitUntil(
         caches.keys().then(function(cacheNames) {
             return Promise.all(cacheNames.map(function(thisCacheName) {
                 if (thisCacheName !== cacheName) {
-                    console.log("[Service Worker} Removing Files from " + thisCacheName);
+                    console.log("Removing Files from " + thisCacheName);
                     return caches.delete(thisCacheName);
                 }
             }))
@@ -47,18 +47,18 @@ self.addEventListener('activate', function(event) {
 })
 
 self.addEventListener('fetch', function(event) {
-    console.log("[Service Worker] Fetching", event.request.url);
+    console.log("Fetching", event.request.url);
 
     event.respondWith(
         caches.match(event.request).then(function(response) {
             if (response) {
-                console.log("[Service Worker] found in cache" + event.request.url);
+                console.log("Found in cache" + event.request.url);
                 return response;
             }
             var requestClone = event.request.clone();
             fetch(event.request).then(function(response) {
                 if (!response) {
-                    console.log("[Service Worker] No Response from fetch");
+                    console.log("No Response from fetch");
                     return response;
                 }
 
@@ -70,7 +70,7 @@ self.addEventListener('fetch', function(event) {
 
                 });
             }).catch(function(err) {
-                console.log("[Service Worker] Error fetching and caching", err);
+                console.log("Error fetching and caching", err);
             })
         })
     )
