@@ -342,7 +342,6 @@ nav h1 a {
     text-align: center;
     display: grid;
     grid-template-columns: 1fr;
-    justify-items: center;
   }
   #restaurants-list li {
     background-color: #fff;
