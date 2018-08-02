@@ -1,4 +1,4 @@
-var cacheName = 'v2';
+var cacheName = 'restaurant';
 var cacheFiles = [
     '/',
     'index.html',
@@ -25,7 +25,7 @@ self.addEventListener('install', function(event) {
     
     event.waitUntil(
         caches.open(cacheName).then(function(cache) {
-            console.log("Caching cacheFiles");
+            console.log("Caching");
             return cache.addAll(cacheFiles);
         })
     )
